@@ -193,6 +193,10 @@ TEST(string_stream, cat_strings)
     ss4 << s3 << s4;
     EXPECT_EQ(s3.size() + s4.size(), ss4.size());
     EXPECT_EQ(s3 + s4, ss4.to_string());
+
+    ST::string_stream ss7;
+    ss7 << '(';
+    EXPECT_EQ(ST_LITERAL("("), ss7.to_string());
 }
 
 TEST(string_stream, cat_ints)
