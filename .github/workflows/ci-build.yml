@@ -29,6 +29,11 @@ jobs:
           else
             sudo apt install "${{ matrix.cfg.compiler }}"
           fi
+      - uses: github/codeql-action/init@v3
+        with:
+          languages: cpp
+          queries: security-and-quality
+          build-mode: none
       - name: Build and Test
         run: |
           export CC="${{ matrix.cfg.compiler }}"
@@ -36,6 +41,7 @@ jobs:
           mkdir -p build && cd build
           cmake -DCMAKE_BUILD_TYPE=Debug -DST_BUILD_TESTS=ON ..
           make test
+      - uses: github/codeql-action/analyze@v3
 
   build-macos:
     runs-on: ${{ matrix.cfg.os }}
@@ -49,6 +55,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: true
+      - uses: github/codeql-action/init@v3
+        with:
+          languages: cpp
+          queries: security-and-quality
+          build-mode: none
       - name: Build and Test
         run: |
           export PATH="/Applications/${{ matrix.cfg.xcode }}.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin:$PATH"
@@ -57,6 +68,7 @@ jobs:
           mkdir -p build && cd build
           cmake -DCMAKE_BUILD_TYPE=Debug -DST_BUILD_TESTS=ON ..
           make test
+      - uses: github/codeql-action/analyze@v3
 
   build-msvc:
     runs-on: ${{ matrix.cfg.os }}
@@ -69,12 +81,18 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: true
+      - uses: github/codeql-action/init@v3
+        with:
+          languages: cpp
+          queries: security-and-quality
+          build-mode: none
       - name: Build and Test
         run: |
           mkdir build
           cd build
           cmake -G "${{ matrix.cfg.msvc }}" -A ${{ matrix.cfg.arch }} -DST_BUILD_TESTS=ON ..
           cmake --build . --config Debug --target test
+      - uses: github/codeql-action/analyze@v3
 
   build-mingw:
     runs-on: windows-latest
