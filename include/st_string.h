@@ -2373,7 +2373,7 @@ namespace ST
         ST_NODISCARD
         string replace(const char8_t *from, const string &to,
                        case_sensitivity_t cs = case_sensitive,
-                       utf_validation_t validation = ST_DEFAULT_VALIDATION)
+                       utf_validation_t validation = ST_DEFAULT_VALIDATION) const
         {
             return replace(from ? string(from, ST_AUTO_SIZE, validation) : string(), to, cs);
         }
