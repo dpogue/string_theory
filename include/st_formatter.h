@@ -304,7 +304,8 @@ namespace ST
     ST_NODISCARD
     formatter_ref_t make_formatter_ref(type_T value)
     {
-        return [value](const ST::format_spec &format, ST::format_writer &output) {
+        return [value = std::forward<type_T>(value)](
+                const ST::format_spec &format, ST::format_writer &output) {
             format_type(format, output, value);
         };
     }
