@@ -2031,9 +2031,7 @@ namespace ST
         string substr(ST_ssize_t start, size_t count = ST_AUTO_SIZE) const
         {
             size_t max = size();
-
-            if (count == ST_AUTO_SIZE)
-                count = max;
+            count = std::min<size_t>(max, count);
 
             if (start < 0) {
                 // Handle negative indexes from the right side of the string
