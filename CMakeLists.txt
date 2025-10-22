@@ -60,8 +60,6 @@ try_compile(ST_HAVE_CXX20_CHAR8_TYPES "${PROJECT_BINARY_DIR}"
             "${PROJECT_SOURCE_DIR}/cmake/check_char8_types.cpp")
 try_compile(ST_HAVE_INT64 "${PROJECT_BINARY_DIR}"
             "${PROJECT_SOURCE_DIR}/cmake/check_int64.cpp")
-try_compile(ST_HAVE_DEPRECATED_ATTR "${PROJECT_BINARY_DIR}"
-            "${PROJECT_SOURCE_DIR}/cmake/check_deprecated_attr.cpp")
 try_compile(ST_HAVE_NODISCARD_ATTR "${PROJECT_BINARY_DIR}"
             "${PROJECT_SOURCE_DIR}/cmake/check_nodiscard.cpp")
 

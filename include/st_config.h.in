@@ -27,9 +27,6 @@
 #define ST_VERSION_STR "@ST_VERSION@"
 
 #cmakedefine ST_HAVE_INT64
-#if (__cplusplus > 201103L) || (defined(_MSVC_LANG) && (_MSVC_LANG > 201103L))
-#cmakedefine ST_HAVE_DEPRECATED_ATTR
-#endif
 #if (__cplusplus > 201402L) || (defined(_MSVC_LANG) && (_MSVC_LANG > 201402L))
 #cmakedefine ST_HAVE_NODISCARD_ATTR
 #cmakedefine ST_HAVE_CXX17_STRING_VIEW
@@ -62,16 +59,6 @@
     ST_AVAILABILITY(tvos,strict,introduced=13.0) \
     ST_AVAILABILITY(watchos,strict,introduced=6.0)
 
-#if defined(_MSC_VER)
-#   define ST_DEPRECATED(message) __declspec(deprecated(message))
-#elif defined(__GNUC__)
-#   define ST_DEPRECATED(message) __attribute__((deprecated(message)))
-#elif defined(ST_HAVE_DEPRECATED_ATTR)
-#   define ST_DEPRECATED(message) [[deprecated(message)]]
-#else
-#   define ST_DEPRECATED(message)
-#endif
-
 #ifndef ST_DEPRECATED_VERSION
 #   if defined(ST_NO_3_0_DEPRECATION)
 #       define ST_DEPRECATED_VERSION    299
@@ -81,19 +68,19 @@
 #endif
 
 #if ST_DEPRECATED_VERSION >= 300
-#   define ST_DEPRECATED_IN_3_0(message) ST_DEPRECATED(message)
+#   define ST_DEPRECATED_IN_3_0(message) [[deprecated(message)]]
 #else
 #   define ST_DEPRECATED_IN_3_0(message)
 #endif
 
 #if ST_DEPRECATED_VERSION >= 304
-#   define ST_DEPRECATED_IN_3_4(message) ST_DEPRECATED(message)
+#   define ST_DEPRECATED_IN_3_4(message) [[deprecated(message)]]
 #else
 #   define ST_DEPRECATED_IN_3_4(message)
 #endif
 
 #if ST_DEPRECATED_VERSION >= 400
-#   define ST_DEPRECATED_IN_4_0(message) ST_DEPRECATED(message)
+#   define ST_DEPRECATED_IN_4_0(message) [[deprecated(message)]]
 #else
 #   define ST_DEPRECATED_IN_4_0(message)
 #endif
