@@ -479,7 +479,7 @@ namespace ST
     inline void format_type(const ST::format_spec &format, ST::format_writer &output,
                             float value)
     {
-        format_type(format, output, double(value));
+        format_type(format, output, static_cast<double>(value));
     }
 
     template<typename value_T>

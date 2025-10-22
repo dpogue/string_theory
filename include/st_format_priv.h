@@ -209,7 +209,8 @@ namespace _ST_PRIVATE
         if (error != conversion_error_t::success)
             append_chars(dest, badchar_substitute_utf8, badchar_substitute_utf8_len);
 
-        ST_ASSERT(size_t(dest - utf8) <= sizeof(utf8), "Destination buffer too small");
+        ST_ASSERT(static_cast<size_t>(dest - utf8) <= sizeof(utf8),
+                  "Destination buffer too small");
 
         output.append(utf8, dest - utf8);
     }
