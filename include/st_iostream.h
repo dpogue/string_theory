@@ -38,14 +38,14 @@ namespace _ST_PRIVATE
             : ST::format_writer(format_str), m_stream(stream) { }
 
         template <class write_char_T>
-        typename std::enable_if<std::is_same<write_char_T, char>::value, void>::type
+        std::enable_if_t<std::is_same_v<write_char_T, char>, void>
         write_data(const char *data, size_t size)
         {
             m_stream.write(data, size);
         }
 
         template <class write_char_T>
-        typename std::enable_if<std::is_same<write_char_T, wchar_t>::value, void>::type
+        std::enable_if_t<std::is_same_v<write_char_T, wchar_t>, void>
         write_data(const char *data, size_t size)
         {
             ST::wchar_buffer wide = ST::utf8_to_wchar(data, size);
@@ -53,7 +53,7 @@ namespace _ST_PRIVATE
         }
 
         template <class write_char_T>
-        typename std::enable_if<std::is_same<write_char_T, char16_t>::value, void>::type
+        std::enable_if_t<std::is_same_v<write_char_T, char16_t>, void>
         write_data(const char *data, size_t size)
         {
             ST::utf16_buffer utf16 = ST::utf8_to_utf16(data, size);
@@ -61,7 +61,7 @@ namespace _ST_PRIVATE
         }
 
         template <class write_char_T>
-        typename std::enable_if<std::is_same<write_char_T, char32_t>::value, void>::type
+        std::enable_if_t<std::is_same_v<write_char_T, char32_t>, void>
         write_data(const char *data, size_t size)
         {
             ST::utf32_buffer utf32 = ST::utf8_to_utf32(data, size);

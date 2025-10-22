@@ -91,7 +91,7 @@ namespace ST
         bool numeric_pad;
     };
 
-    static_assert(std::is_standard_layout<ST::format_spec>::value,
+    static_assert(std::is_standard_layout_v<ST::format_spec>,
                   "ST::format_spec must be standard-layout to pass across the DLL boundary");
 
     class format_writer

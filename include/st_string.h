@@ -69,7 +69,7 @@ namespace ST
         friend class string;
     };
 
-    static_assert(std::is_standard_layout<ST::conversion_result>::value,
+    static_assert(std::is_standard_layout_v<ST::conversion_result>,
                   "ST::conversion_result must be standard-layout to pass across the DLL boundary");
 
     class string
@@ -2545,7 +2545,7 @@ namespace ST
         }
     };
 
-    static_assert(std::is_standard_layout<ST::string>::value,
+    static_assert(std::is_standard_layout_v<ST::string>,
                   "ST::string must be standard-layout to pass across the DLL boundary");
 
     struct hash

@@ -150,7 +150,7 @@ namespace _ST_PRIVATE
     ST_NODISCARD
     ST::char_buffer mini_format_int_s(int radix, bool upper_case, int_T value)
     {
-        typedef typename std::make_unsigned<int_T>::type uint_T;
+        typedef std::make_unsigned_t<int_T> uint_T;
         ST::uint_formatter<uint_T> formatter;
         uint_T abs_value = value < 0 ? 0 - static_cast<uint_T>(value)
                                      :     static_cast<uint_T>(value);

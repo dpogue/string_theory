@@ -123,7 +123,7 @@ namespace _ST_PRIVATE
     void format_numeric_s(const ST::format_spec &format,
                           ST::format_writer &output, int_T value)
     {
-        static_assert(std::is_signed<int_T>::value,
+        static_assert(std::is_signed_v<int_T>,
                       "Use _format_numeric_u for unsigned numerics");
 
         int radix = 10;
@@ -148,7 +148,7 @@ namespace _ST_PRIVATE
             ST_ASSERT(false, "Invalid digit class for _format_numeric_s");
         }
 
-        typedef typename std::make_unsigned<int_T>::type uint_T;
+        typedef std::make_unsigned_t<int_T> uint_T;
         ST::uint_formatter<uint_T> formatter;
         formatter.format(static_cast<uint_T>(std::abs(value)), radix, upper_case);
 
@@ -163,7 +163,7 @@ namespace _ST_PRIVATE
     void format_numeric_u(const ST::format_spec &format,
                           ST::format_writer &output, uint_T value)
     {
-        static_assert(std::is_unsigned<uint_T>::value,
+        static_assert(std::is_unsigned_v<uint_T>,
                       "Use _format_numeric_s for signed numerics");
 
         int radix = 10;
