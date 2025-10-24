@@ -98,7 +98,7 @@ namespace ST
 
         void format(float_T value, char format)
         {
-            static const char valid_formats[] = "efgEFG";
+            static constexpr const char valid_formats[] = "efgEFG";
             if (!std::char_traits<char>::find(valid_formats, sizeof(valid_formats) - 1, format))
                 throw ST::bad_format("Unsupported floating-point format specifier");
 

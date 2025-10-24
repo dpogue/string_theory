@@ -22,7 +22,7 @@ cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 project(string_theory)
 
 # We will detect and use optional features in newer C++ standards,
-# but C++11 is required at minimum
+# but C++14 is required at minimum
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED OFF)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -60,8 +60,6 @@ try_compile(ST_HAVE_CXX20_CHAR8_TYPES "${PROJECT_BINARY_DIR}"
             "${PROJECT_SOURCE_DIR}/cmake/check_char8_types.cpp")
 try_compile(ST_HAVE_INT64 "${PROJECT_BINARY_DIR}"
             "${PROJECT_SOURCE_DIR}/cmake/check_int64.cpp")
-try_compile(ST_HAVE_DEPRECATED_ATTR "${PROJECT_BINARY_DIR}"
-            "${PROJECT_SOURCE_DIR}/cmake/check_deprecated_attr.cpp")
 try_compile(ST_HAVE_NODISCARD_ATTR "${PROJECT_BINARY_DIR}"
             "${PROJECT_SOURCE_DIR}/cmake/check_nodiscard.cpp")
 

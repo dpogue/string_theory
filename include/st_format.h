@@ -47,7 +47,7 @@ namespace _ST_PRIVATE
         }
 
         ST_NODISCARD
-        ST::string to_string(bool utf8_encoded, ST::utf_validation_t validation)
+        ST::string to_string(bool utf8_encoded, ST::utf_validation_t validation) const
         {
             return m_output.to_string(utf8_encoded, validation);
         }

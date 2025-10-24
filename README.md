@@ -119,7 +119,7 @@ string_theory supports a variety of platforms and compilers.  As of March
 - MinGW-w64 GCC 8 (x86_64)
 
 As of string_theory 3.0, support for some older compilers has been dropped.
-You'll need a compiler that supports most of C++11.
+You'll need a compiler that supports C++14 or later.
 
 Contributing to String Theory
 -----------------------------
